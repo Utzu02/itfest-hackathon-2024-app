@@ -30,15 +30,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
-
-        <activity
-            android:name=".MyLocationDemoActivity"
-            android:exported="false"
-            android:label="@string/title_activity_my_location_demo" />
-        <activity
-            android:name=".MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps" />
         <activity
             android:name=".MapsActivity33"
             android:exported="false"

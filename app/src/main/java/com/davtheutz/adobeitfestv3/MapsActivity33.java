@@ -1,8 +1,13 @@
 package com.davtheutz.adobeitfestv3;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.davtheutz.adobeitfestv3.databinding.ActivityMaps33Binding;
+import com.davtheutz.adobeitfestv3.utils.PermissionUtils;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -76,7 +82,42 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
                 zoomOut();
             }
         });
+        enableMyLocation(mMap);
+    }
 
+    @SuppressLint("MissingPermission")
+    private void enableMyLocation(GoogleMap map) {
+        // 1. Check if permissions are granted, if so, enable the my location layer
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            map.setMyLocationEnabled(true);
+            return;
+        }
+
+        // 2. Otherwise, request location permissions from the user.
+        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode != 1) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            return;
+        }
+
+        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
+                Manifest.permission.ACCESS_FINE_LOCATION) || PermissionUtils
+                .isPermissionGranted(permissions, grantResults,
+                        Manifest.permission.ACCESS_COARSE_LOCATION)) {
+            // Enable the my location layer if the permission has been granted.
+            enableMyLocation(mMap);
+        } else {
+            // Permission was denied. Display an error message
+            // ...
+        }
     }
 
     private void initGhostReporting(GoogleMap mMap)
@@ -86,7 +127,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
             @Override
             public void onMapClick(@NonNull LatLng latLng) {
                 Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(latLng).title("Spotted Ghost"));
-                //ghostMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ghost));
+                // ghostMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ghost));
             }
         });
     }

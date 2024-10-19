@@ -5,4 +5,6 @@
     <item name="simpleProgressBar" type="id" />
     <item name="imageButton" type="id" />
     <item name="textView" type="id" />
+    <item name="zoomOutBut" type="id" />
+    <item name="zoomInBut" type="id" />
 </resources>
