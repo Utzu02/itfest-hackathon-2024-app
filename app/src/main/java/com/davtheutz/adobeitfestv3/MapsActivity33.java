@@ -64,6 +64,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         mMap = googleMap;
 
         // Ghost Report
+        zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();
         initGhostReporting(mMap);
         ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
 
@@ -92,25 +93,25 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         });
         findViewById(R.id.vampir).setOnClickListener(new View.OnClickListener(){
             public  void onClick(View v) {
-                clickButoane();
+                clickButoane(R.drawable.vampir);
             }
         });
         findViewById(R.id.skeleton).setOnClickListener(new View.OnClickListener(){
             public  void onClick(View v) {
-                clickButoane();
+                clickButoane(R.drawable.skeleton);
             }
         });
         findViewById(R.id.fantoma).setOnClickListener(new View.OnClickListener(){
             public  void onClick(View v) {
-                clickButoane();
+                clickButoane(R.drawable.ghost_modified);
             }
         });
         mMap.setMinZoomPreference(6.0f);
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         enableMyLocation(mMap);
     }
-    public void clickButoane() {
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(R.drawable.ghost);
+    public void clickButoane(int d) {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(d);
         Bitmap bitmap = bitmapDrawable.getBitmap();
         Bitmap resized = Bitmap.createScaledBitmap(bitmap, 48, 48, false);
         BitmapDescriptor customMarker = BitmapDescriptorFactory.fromBitmap(resized);
