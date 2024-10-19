@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +19,9 @@ import android.widget.ImageButton;
 
 import com.davtheutz.adobeitfestv3.databinding.ActivityMaps33Binding;
 import com.davtheutz.adobeitfestv3.utils.PermissionUtils;
+import com.davtheutz.adobeitfestv3.utils.ReportingUtils;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -58,16 +63,18 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
+        // Ghost Report
         initGhostReporting(mMap);
         ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Spotted Ghost"));
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(R.drawable.ghost);
+                Bitmap bitmap = bitmapDrawable.getBitmap();
+                Bitmap resized = Bitmap.createScaledBitmap(bitmap, 48, 48, false);
+                BitmapDescriptor customMarker = BitmapDescriptorFactory.fromBitmap(resized);
+
+                Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Spotted Ghost at " + ReportingUtils.getCurrentTimeFormatted()));
+                ghostMarker.setIcon(customMarker);
             }
         });
         Button zoomInButton = (Button) findViewById(R.id.zoomInBut);
@@ -82,7 +89,12 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
                 zoomOut();
             }
         });
+        mMap.setMinZoomPreference(6.0f);
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         enableMyLocation(mMap);
+        FusedLocationProviderClient locProvider = LocationServices.getFusedLocationProviderClient(this);
+        LatLng latLng = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
     }
 
     @SuppressLint("MissingPermission")
