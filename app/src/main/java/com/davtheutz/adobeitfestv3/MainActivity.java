@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        startActivity(new Intent(this, MapsActivity33.class));
+        startActivity(new Intent(this, MapsActivity.class));
 
 
     }
