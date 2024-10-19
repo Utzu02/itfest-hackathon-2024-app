@@ -92,9 +92,6 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         mMap.setMinZoomPreference(6.0f);
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         enableMyLocation(mMap);
-        FusedLocationProviderClient locProvider = LocationServices.getFusedLocationProviderClient(this);
-        LatLng latLng = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
     }
 
     @SuppressLint("MissingPermission")
