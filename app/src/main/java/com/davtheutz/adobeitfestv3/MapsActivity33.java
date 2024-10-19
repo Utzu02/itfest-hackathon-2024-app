@@ -66,15 +66,10 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         // Ghost Report
         initGhostReporting(mMap);
         ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(R.drawable.ghost);
-                Bitmap bitmap = bitmapDrawable.getBitmap();
-                Bitmap resized = Bitmap.createScaledBitmap(bitmap, 48, 48, false);
-                BitmapDescriptor customMarker = BitmapDescriptorFactory.fromBitmap(resized);
-
-                Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Spotted Ghost at " + ReportingUtils.getCurrentTimeFormatted()));
-                ghostMarker.setIcon(customMarker);
+                findViewById(R.id.navbarmonstri).setVisibility(View.VISIBLE);
             }
         });
         Button zoomInButton = (Button) findViewById(R.id.zoomInBut);
@@ -89,11 +84,40 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
                 zoomOut();
             }
         });
+        Button closeNavButton = (Button) findViewById(R.id.closeNav);
+        closeNavButton.setOnClickListener(new View.OnClickListener() {
+            public  void onClick(View v) {
+                findViewById(R.id.navbarmonstri).setVisibility(View.GONE);
+            }
+        });
+        findViewById(R.id.vampir).setOnClickListener(new View.OnClickListener(){
+            public  void onClick(View v) {
+                clickButoane();
+            }
+        });
+        findViewById(R.id.skeleton).setOnClickListener(new View.OnClickListener(){
+            public  void onClick(View v) {
+                clickButoane();
+            }
+        });
+        findViewById(R.id.fantoma).setOnClickListener(new View.OnClickListener(){
+            public  void onClick(View v) {
+                clickButoane();
+            }
+        });
         mMap.setMinZoomPreference(6.0f);
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         enableMyLocation(mMap);
     }
+    public void clickButoane() {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(R.drawable.ghost);
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        Bitmap resized = Bitmap.createScaledBitmap(bitmap, 48, 48, false);
+        BitmapDescriptor customMarker = BitmapDescriptorFactory.fromBitmap(resized);
 
+        Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Spotted Ghost at " + ReportingUtils.getCurrentTimeFormatted()));
+        ghostMarker.setIcon(customMarker);
+    }
     @SuppressLint("MissingPermission")
     private void enableMyLocation(GoogleMap map) {
         // 1. Check if permissions are granted, if so, enable the my location layer
