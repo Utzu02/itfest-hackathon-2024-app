@@ -32,10 +32,6 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name=".MyLocationDemoActivity"
-            android:exported="false"
-            android:label="@string/title_activity_my_location_demo" />
-        <activity
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
