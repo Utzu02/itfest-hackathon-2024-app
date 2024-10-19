@@ -61,7 +61,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("BUTTONS", "Adauga fantoma");
+                Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Spotted Ghost"));
             }
         });
         Button zoomInButton = (Button) findViewById(R.id.zoomInBut);
