@@ -148,8 +148,8 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
         android:id="@+id/navbarmonstri"
-        android:layout_width="413dp"
-        android:layout_height="170dp"
+        android:layout_width="380dp"
+        android:layout_height="180dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="@color/white"
         android:visibility="gone"
@@ -157,10 +157,10 @@
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/map"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.2">
 
         <Button
             android:id="@+id/closeNav"
@@ -171,7 +171,7 @@
             android:background="@drawable/custom_btn_remove"
             android:backgroundTint="@color/black"
 
-            android:layout_marginLeft="350dp"
+            android:layout_marginLeft="320dp"
             android:layout_marginTop="10dp"
             />
         <ImageButton
@@ -180,8 +180,8 @@
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
 
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="59dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="65dp"
             android:adjustViewBounds="true"
             android:background="@drawable/circle_button"
 
@@ -194,16 +194,16 @@
             android:layout_height="wrap_content"
             android:text="Ghost"
             android:textSize="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="125dp" />
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="130dp" />
         <ImageButton
             android:id="@+id/skeleton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
 
-            android:layout_marginLeft="180dp"
-            android:layout_marginTop="59dp"
+            android:layout_marginLeft="158dp"
+            android:layout_marginTop="65dp"
             android:adjustViewBounds="true"
             android:background="@drawable/circle_button"
 
@@ -216,16 +216,16 @@
             android:layout_height="wrap_content"
             android:text="Skelethon"
             android:textSize="20dp"
-            android:layout_marginLeft="166dp"
-            android:layout_marginTop="125dp" />
+            android:layout_marginLeft="144dp"
+            android:layout_marginTop="130dp" />
         <ImageButton
             android:id="@+id/vampir"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerHorizontal="true"
 
-            android:layout_marginLeft="310dp"
-            android:layout_marginTop="59dp"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="65dp"
             android:adjustViewBounds="true"
             android:background="@drawable/circle_button"
 
@@ -238,7 +238,7 @@
             android:layout_height="wrap_content"
             android:text="Vampire"
             android:textSize="20dp"
-            android:layout_marginLeft="302dp"
-            android:layout_marginTop="125dp" />
+            android:layout_marginLeft="282dp"
+            android:layout_marginTop="130dp" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

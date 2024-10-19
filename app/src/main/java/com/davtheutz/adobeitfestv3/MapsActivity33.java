@@ -70,6 +70,11 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if(findViewById(R.id.navbarmonstri).getVisibility()==View.VISIBLE)
+                {
+                    findViewById(R.id.navbarmonstri).setVisibility(View.GONE);
+                    return;
+                }
                 findViewById(R.id.navbarmonstri).setVisibility(View.VISIBLE);
             }
         });
