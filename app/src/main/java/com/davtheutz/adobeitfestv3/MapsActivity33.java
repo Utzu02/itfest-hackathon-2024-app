@@ -1,16 +1,21 @@
 package com.davtheutz.adobeitfestv3;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import com.davtheutz.adobeitfestv3.databinding.ActivityMaps33Binding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.davtheutz.adobeitfestv3.databinding.ActivityMaps33Binding;
 
 public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallback {
 
@@ -47,5 +52,31 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        initGhostReporting(mMap);
+
     }
+
+    private void initGhostReporting(GoogleMap mMap)
+    {
+        // Testing create marker on click
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+                Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(latLng).title("Spotted Ghost"));
+                //ghostMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ghost));
+            }
+        });
+    }
+
+    public void zoomIn()
+    {
+        CameraUpdateFactory.zoomIn();
+    }
+
+    public void zoomOut()
+    {
+        CameraUpdateFactory.zoomOut();
+    }
+
 }
