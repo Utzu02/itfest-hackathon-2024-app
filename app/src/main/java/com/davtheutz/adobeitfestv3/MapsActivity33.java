@@ -67,7 +67,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         Button zoomInButton = (Button) findViewById(R.id.zoomInBut);
         zoomInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("BUTTONS", "Adauga fantoma");
+                zoomIn();
             }
         });
         Button zoomOutButton = (Button) findViewById(R.id.zoomOutBut);
@@ -93,13 +93,12 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
 
     public void zoomIn()
     {
-        CameraUpdateFactory.zoomIn();
+        mMap.moveCamera(CameraUpdateFactory.zoomIn());
     }
 
     public void zoomOut()
     {
-        CameraUpdateFactory.zoomOut();
-        CameraUpdateFactory.zoomTo(15);
+        mMap.moveCamera(CameraUpdateFactory.zoomOut());
     }
 
 }
