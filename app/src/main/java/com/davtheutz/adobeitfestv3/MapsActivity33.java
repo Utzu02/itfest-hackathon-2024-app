@@ -29,6 +29,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapColorScheme;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -62,10 +63,9 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Ghost Report
-        zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();
-        initGhostReporting(mMap);
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        mMap.setMapColorScheme(MapColorScheme.DARK);
+        zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();
         ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +83,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         zoomOutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 zoomOut();
+    Log.d("BUTTONS", "User tapped the Supabutton");
             }
         });
         Button closeNavButton = (Button) findViewById(R.id.closeNav);
@@ -106,14 +107,13 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
                 clickButoane(R.drawable.ghost_modified);
             }
         });
-        mMap.setMinZoomPreference(6.0f);
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         enableMyLocation(mMap);
     }
     public void clickButoane(int d) {
         BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(d);
         Bitmap bitmap = bitmapDrawable.getBitmap();
-        Bitmap resized = Bitmap.createScaledBitmap(bitmap, 48, 48, false);
+        Bitmap resized = Bitmap.createScaledBitmap(bitmap, 60, 60, false);
         BitmapDescriptor customMarker = BitmapDescriptorFactory.fromBitmap(resized);
 
         Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Spotted Ghost at " + ReportingUtils.getCurrentTimeFormatted()));
@@ -152,18 +152,6 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
             // Permission was denied. Display an error message
             // ...
         }
-    }
-
-    private void initGhostReporting(GoogleMap mMap)
-    {
-        // Testing create marker on click
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(@NonNull LatLng latLng) {
-                Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(latLng).title("Spotted Ghost"));
-                // ghostMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ghost));
-            }
-        });
     }
 
     public void zoomIn()
