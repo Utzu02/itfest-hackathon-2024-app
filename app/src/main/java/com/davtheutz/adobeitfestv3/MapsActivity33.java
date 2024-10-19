@@ -91,7 +91,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.setMapColorScheme(MapColorScheme.DARK);
-        mMap.setMinZoomPreference(14.0f);
+        mMap.setMinZoomPreference(5.0f);
         mMap.setMaxZoomPreference(20.0f);
         mMap.getUiSettings().setMapToolbarEnabled(false);
         ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
