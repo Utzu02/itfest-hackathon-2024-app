@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapColorScheme;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.Random;
 
 public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallback {
 
@@ -65,7 +68,9 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.setMapColorScheme(MapColorScheme.DARK);
-        zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();zoomIn();
+        mMap.setMinZoomPreference(14.0f);
+        mMap.setMaxZoomPreference(20.0f);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +93,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         zoomOutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 zoomOut();
-    Log.d("BUTTONS", "User tapped the Supabutton");
+
             }
         });
         Button closeNavButton = (Button) findViewById(R.id.closeNav);
@@ -114,11 +119,37 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         });
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         enableMyLocation(mMap);
+        initRemoteClick(mMap);
     }
+
+    private void initRemoteClick(GoogleMap mMap)
+    {
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull LatLng latLng) {
+                int rand = new Random().nextInt(3);
+                switch(rand)
+                {
+                    case 0:
+                        clickButoane(R.drawable.ghost_modified);
+                        break;
+                    case 1:
+                        clickButoane(R.drawable.vampir);
+                        break;
+                    case 2:
+                        clickButoane(R.drawable.skeleton);
+                        break;
+
+                }
+
+            }
+        });
+    }
+
     public void clickButoane(int d) {
         BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(d);
         Bitmap bitmap = bitmapDrawable.getBitmap();
-        Bitmap resized = Bitmap.createScaledBitmap(bitmap, 60, 60, false);
+        Bitmap resized = Bitmap.createScaledBitmap(bitmap, 164, 164, false);
         BitmapDescriptor customMarker = BitmapDescriptorFactory.fromBitmap(resized);
 
         Marker ghostMarker = mMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Spotted Ghost at " + ReportingUtils.getCurrentTimeFormatted()));
