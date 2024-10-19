@@ -5,6 +5,10 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.davtheutz.adobeitfestv3.databinding.ActivityMaps33Binding;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -54,6 +58,24 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         initGhostReporting(mMap);
+        ImageButton button = (android.widget.ImageButton) findViewById(R.id.imageButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTONS", "Adauga fantoma");
+            }
+        });
+        Button zoomInButton = (Button) findViewById(R.id.zoomInBut);
+        zoomInButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.d("BUTTONS", "Adauga fantoma");
+            }
+        });
+        Button zoomOutButton = (Button) findViewById(R.id.zoomOutBut);
+        zoomOutButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                zoomOut();
+            }
+        });
 
     }
 
@@ -77,6 +99,7 @@ public class MapsActivity33 extends FragmentActivity implements OnMapReadyCallba
     public void zoomOut()
     {
         CameraUpdateFactory.zoomOut();
+        CameraUpdateFactory.zoomTo(15);
     }
 
 }

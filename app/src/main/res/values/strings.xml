@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">adobeitfestv3</string>
-    <string name="title_activity_maps33">MapsActivity33</string>
+    <string name="app_name">Adobe Hack</string>
+    <string name="title_activity_maps">title_activity_maps</string>
+    <string name="button">Start\n</string>
+    <string name="welcome">Welcome\n</string>
+    <string name="fantoma">Adaugă</string>
+    <string name="mesajBluetooth">Bluetooth activated</string>
+    <string name="title_activity_maps33">map33\n</string>
 </resources>
