@@ -1,7 +1,41 @@
-**SpecterSpot** app, developed by DavTheUtz team as part of the **ITFest Adobe Hackathon, October 2024**,  is based on the scenario of a groups of friends at a party in the middle of the forest that has gone wrong.
-Spooky things start happening and they allegedly start seeing strange creatures like ghosts, skeletons or vampires. As a solution, **SpecterSpot** provides an interactive map that allows users to report sightings at their current location
-in order to warn others.
+# 👻 SpecterSpot
 
-The app features a **pop-up menu** that allows for selecting one of three types of creatures for reporting. These are **time based entries**, therefore allowing users to check when a sighting happened by tapping the corresponding icon.
+**Developed by:** DavTheUtz Team  
+**Event:** ITFest Adobe Hackathon – October 2024
 
-This app is developed in **Android Studio** using **Java** and implements the **Google Maps SDK** for Android.
+---
+
+## 🧩 Overview
+
+**SpecterSpot** is a mobile Android application built around a fictional horror scenario:  
+A group of friends is partying in the middle of the forest when things take a turn for the worse. Strange and spooky events begin to unfold — ghostly apparitions, skeletons, and vampires start appearing. To stay safe and alert others, users can report these supernatural sightings in real-time.
+
+The app provides an **interactive map** that allows users to pin and view sightings based on their **current location**. Each report includes a **timestamp**, enabling others to know not just where, but also **when** an encounter was reported.
+
+---
+
+## 🚀 Features
+
+- 🗺️ **Live Interactive Map**  
+  Integrates the **Google Maps SDK for Android** to display reports in real-time.
+
+- 👁️ **Quick Report System**  
+  A pop-up menu allows users to select one of three creature types:
+  - 👻 Ghost  
+  - 💀 Skeleton  
+  - 🧛 Vampire
+
+- 🕒 **Time-Based Entries**  
+  Each report is timestamped, letting users track how recent a sighting was.
+
+- ⚠️ **Community Awareness**  
+  Helps users stay safe by avoiding areas with recent paranormal activity.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Platform:** Android  
+- **Language:** Java  
+- **IDE:** Android Studio  
+- **Map Integration:** Google Maps SDK for Android
