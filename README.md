@@ -1,6 +1,7 @@
 # 👻 SpecterSpot
 
 **Developed by:** DavTheUtz Team | Theodor Vulpe, Ioan-Daniel Tudorescu, Bogdan-Marian Zamfiroiu, David-Mihai Petreus
+---
 **Event:** ITFest Adobe Hackathon – October 2024
 
 ---
