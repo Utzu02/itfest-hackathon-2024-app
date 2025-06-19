@@ -1,6 +1,6 @@
 # 👻 SpecterSpot
 
-**Developed by:** DavTheUtz Team  
+**Developed by:** DavTheUtz Team | Theodor Vulpe, Ioan-Daniel Tudorescu, Bogdan-Marian Zamfiroiu, David-Mihai Petreus
 **Event:** ITFest Adobe Hackathon – October 2024
 
 ---
@@ -30,6 +30,14 @@ The app provides an **interactive map** that allows users to pin and view sighti
 
 - ⚠️ **Community Awareness**  
   Helps users stay safe by avoiding areas with recent paranormal activity.
+
+---
+
+## 📷 Screenshots
+
+![](images/screenshot1.png)
+![](images/screenshot2.png)
+![](images/screenshot3.png)
 
 ---
 
